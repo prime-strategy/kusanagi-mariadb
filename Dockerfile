@@ -18,12 +18,12 @@ COPY docker-entrypoint.sh /usr/local/bin/
 
 RUN chmod +x /usr/local/bin/on-start.sh /usr/local/bin/galera-recovery.sh
 
-ARG MICROSCANER_TOKEN
-RUN [ x${MICROSCANER_TOKEN} != x ] \
+ARG MICROSCANNER_TOKEN
+RUN [ x${MICROSCANNER_TOKEN} != x ] \
 	&& update-ca-certificates \
 	&& wget --no-check-certificate https://get.aquasec.com/microscanner \
 	&& chmod +x microscanner \
-	&& ./microscanner ${MICROSCANER_TOKEN} || exit 1\
+	&& ./microscanner ${MICROSCANNER_TOKEN} || exit 1\
 	&& rm ./microscanner
 
 RUN apt-get purge -y --auto-remove ca-certificates wget 
