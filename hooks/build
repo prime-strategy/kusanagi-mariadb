@@ -1,0 +1,10 @@
+#!/bin/bash
+set -eu
+if [ "$DOCKERFILE_PATH" = "" ]; then
+    DOCKERFILE_PATH_ARG=""
+else
+    DOCKERFILE_PATH_ARG="-f $DOCKERFILE_PATH"
+fi
+
+BUILDARGS=${MICROSCANNER:+--build-args MICROSCANER=$MICROSCANNER }
+docker build $BUILDARGS $DOCKERFILE_PATH_ARG -t $IMAGE_NAME .
