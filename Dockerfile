@@ -1,4 +1,5 @@
-FROM mariadb:10.4.1-bionic
+FROM mariadb:10.4.2-bionic
+MAINTAINER kusanagi@prime-strategy.co.jp
 
 RUN set -x \
     && apt-get update \
